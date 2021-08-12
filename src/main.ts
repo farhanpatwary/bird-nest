@@ -2,20 +2,34 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 import { ConnectionConfig } from 'pg';
+import { createConnection } from 'typeorm';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import { User } from './entities/user/user.entity';
+import { UserService } from './controllers/user/user.service';
 
 async function bootstrap() {
   dotenv.config();
-  const DBConfig: ConnectionConfig = {
-    user: process.env.DB_USER,
+
+  // ORM DB connection
+  const entities = [User];
+  const PostgresDBConfig: PostgresConnectionOptions = {
+    type: 'postgres',
+    username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
-    ssl: Boolean(process.env.DB_SSL),
+    ssl: process.env.DB_SSL === 'true' ? true : false,
+    synchronize: true,
+    entities: entities,
   };
-  console.log(DBConfig);
+  console.log(PostgresDBConfig);
+  try {
+    const connection = await createConnection(PostgresDBConfig);
+  } catch (e) {
+    console.log('An error occurred', e);
+  }
 
-  console.log(process.env);
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
 }
