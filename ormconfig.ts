@@ -3,7 +3,7 @@ import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConne
 
 // ORM DB connection
 const entities = [User];
-export const config: PostgresConnectionOptions = {
+export const ORMconfig: PostgresConnectionOptions = {
   type: 'postgres',
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
