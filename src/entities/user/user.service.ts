@@ -12,4 +12,19 @@ export class UserService {
   getAll(): Promise<User[]> {
     return this.userRepository.find();
   }
+
+  async getById(id: number): Promise<User> {
+    try {
+      const user = this.userRepository.findOneOrFail({ id });
+      return user;
+    } catch (e) {
+      console.log(`Failed to find user with id: ${id}`);
+      return e;
+    }
+  }
+
+  createNew(user: User): Promise<User> {
+    const newUser = this.userRepository.create({ ...user });
+    return this.userRepository.save(newUser);
+  }
 }
