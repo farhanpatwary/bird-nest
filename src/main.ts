@@ -1,11 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
-import { ConnectionConfig } from 'pg';
 import { createConnection } from 'typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { User } from './entities/user/user.entity';
-import { UserService } from './controllers/user/user.service';
 
 async function bootstrap() {
   dotenv.config();
