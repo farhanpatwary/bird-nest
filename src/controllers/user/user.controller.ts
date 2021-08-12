@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { USERS_LIST_MOCK } from './mocks/user.mocks';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private userService: UserService) {}
   @Get('/users')
   getAllUsers() {
-    return USERS_LIST_MOCK;
+    return this.userService.getAll();
   }
 }
