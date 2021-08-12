@@ -1,10 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
 import { UserService } from 'src/entities/user/user.service';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly _userService: UserService) {}
-  @Get('/users')
+  @Get('/all')
   getAllUsers() {
     return [];
   }
