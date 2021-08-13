@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
+import { Controller, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
 import { request } from 'express';
 import { User } from 'src/entities/user/user.entity';
 import { UserService } from 'src/entities/user/user.service';
@@ -17,10 +17,27 @@ export class UserController {
     return this._userService.getById(id);
   }
 
-  @Post('')
-  createNewUser(@Req() request, @Res() response) {
-    const user = request.body.user;
-    console.log(user);
-    return this._userService.createNew(user);
+  @Put('/:id')
+  async updateUserById(
+    @Param('id') id: number,
+    @Req() request,
+    @Res() response,
+  ) {
+    try {
+      const user = await this._userService.updateUser(id, request.body.user);
+      response.status(200).send(user);
+    } catch (e) {
+      response.status(500).send();
+    }
+  }
+
+  @Post()
+  async createNewUser(@Req() request, @Res() response) {
+    try {
+      const user = await this._userService.createNew(request.body.user);
+      response.status(200).send(user);
+    } catch (e) {
+      response.status(500).send();
+    }
   }
 }

@@ -27,4 +27,14 @@ export class UserService {
     const newUser = this.userRepository.create({ ...user });
     return this.userRepository.save(newUser);
   }
+
+  async updateUser(id: number, userUpdates: Partial<User>) {
+    const user = await this.getById(id);
+    Object.keys(user).forEach((property) => {
+      if (userUpdates[property]) {
+        user[property] = userUpdates[property];
+      }
+    });
+    return this.userRepository.save(user);
+  }
 }
