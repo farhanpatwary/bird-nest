@@ -13,9 +13,10 @@ export class ItemController {
   @Post()
   async createNewItem(@Req() request, @Res() response) {
     try {
-      const item = await this._itemService.createNew(request.body.user);
+      const item = await this._itemService.createNew(request.body.item);
       response.status(200).send(item);
     } catch (e) {
+      console.error(e);
       response.status(500).send();
     }
   }
