@@ -1,8 +1,9 @@
+import { Item } from 'src/entities/item/item.entity';
 import { User } from 'src/entities/user/user.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
 // ORM DB connection
-const entities = [User];
+const entities = [User, Item];
 export const ORMconfig: PostgresConnectionOptions = {
   type: 'postgres',
   username: process.env.DB_USER,
