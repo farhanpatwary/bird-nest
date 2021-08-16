@@ -10,6 +10,7 @@ import { UserService } from './entities/user/user.service';
 import { ItemModule } from './entities/item/item.module';
 import { Item } from './entities/item/item.entity';
 import { ItemController } from './controllers/item/item.controller';
+import { ItemService } from './entities/item/item.service';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { ItemController } from './controllers/item/item.controller';
     ItemModule,
   ],
   controllers: [AppController, UserController, ItemController],
-  providers: [AppService, UserService],
+  providers: [AppService, UserService, ItemService],
 })
 export class AppModule {}
