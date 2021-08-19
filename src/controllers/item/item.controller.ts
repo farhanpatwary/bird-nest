@@ -1,6 +1,8 @@
 import { Controller, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ItemService } from 'src/entities/item/item.service';
 
+@ApiTags('Items')
 @Controller('items')
 export class ItemController {
   constructor(private _itemService: ItemService) {}
