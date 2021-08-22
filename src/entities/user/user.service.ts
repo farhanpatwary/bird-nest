@@ -13,6 +13,10 @@ export class UserService {
     return this.userRepository.find();
   }
 
+  getActive(): Promise<User[]> {
+    return this.userRepository.find({ isActive: true });
+  }
+
   async getById(id: number): Promise<User> {
     try {
       const user = this.userRepository.findOneOrFail({ id });

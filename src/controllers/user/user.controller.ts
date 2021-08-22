@@ -1,7 +1,5 @@
 import { Controller, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { request } from 'express';
-import { User } from 'src/entities/user/user.entity';
 import { UserService } from 'src/entities/user/user.service';
 
 @ApiTags('Users')
@@ -12,6 +10,11 @@ export class UserController {
   @Get('/all')
   getAllUsers() {
     return this._userService.getAll();
+  }
+
+  @Get('active')
+  getActiveUsers() {
+    return this._userService.getActive();
   }
 
   @Get('/:id')
