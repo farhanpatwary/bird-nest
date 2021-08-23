@@ -17,7 +17,7 @@ export class UserService {
     return this.userRepository.find({ isActive: true });
   }
 
-  async getById(id: number): Promise<User> {
+  async getById(id: string): Promise<User> {
     try {
       const user = this.userRepository.findOneOrFail({ id });
       return user;
@@ -32,7 +32,7 @@ export class UserService {
     return this.userRepository.save(newUser);
   }
 
-  async updateUser(id: number, userUpdates: Partial<User>) {
+  async updateUser(id: string, userUpdates: Partial<User>) {
     const user = await this.getById(id);
     Object.keys(user).forEach((property) => {
       if (userUpdates[property]) {

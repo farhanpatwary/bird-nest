@@ -18,13 +18,13 @@ export class UserController {
   }
 
   @Get('/:id')
-  getUserById(@Param('id') id: number) {
+  getUserById(@Param('id') id: string) {
     return this._userService.getById(id);
   }
 
   @Put('/:id')
   async updateUserById(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Req() request,
     @Res() response,
   ) {
