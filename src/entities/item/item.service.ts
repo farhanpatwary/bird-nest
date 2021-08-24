@@ -15,7 +15,7 @@ export class ItemService {
 
   async getById(id: number): Promise<Item> {
     try {
-      const user = this.itemRepository.findOneOrFail({ id });
+      const user = this.itemRepository.findOneOrFail({ item_id: id });
       return user;
     } catch (e) {
       console.log(`Failed to find user with id: ${id}`);
