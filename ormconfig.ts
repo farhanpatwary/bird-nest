@@ -1,5 +1,5 @@
 import { Item } from 'src/entities/item/item.entity';
-import { User } from 'src/entities/user/user.entity';
+import { User } from 'src/controllers/user/entity/user.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
 // ORM DB connection
