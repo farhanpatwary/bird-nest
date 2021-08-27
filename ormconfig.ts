@@ -1,4 +1,4 @@
-import { Item } from 'src/entities/item/item.entity';
+import { Item } from 'src/controllers/item/entity/item.entity';
 import { User } from 'src/controllers/user/entity/user.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
