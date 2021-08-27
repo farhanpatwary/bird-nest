@@ -3,14 +3,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ORMconfig } from 'ormconfig';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './controllers/user/user.controller';
-import { User } from './controllers/user/entity/user.entity';
-import { UserModule } from './controllers/user/user.module';
-import { ItemModule } from './controllers/item/item.module';
-import { Item } from './controllers/item/entity/item.entity';
-import { ItemController } from './controllers/item/item.controller';
-import { ItemService } from './controllers/item/item.service';
-import { UserService } from './controllers/user/user.service';
+import { UserController } from './user/user.controller';
+import { User } from './user/entity/user.entity';
+import { UserModule } from './user/user.module';
+import { UserService } from './user/user.service';
+import { Item } from './item/entity/item.entity';
+import { ItemController } from './item/item.controller';
+import { ItemModule } from './item/item.module';
+import { ItemService } from './item/item.service';
 
 @Module({
   imports: [

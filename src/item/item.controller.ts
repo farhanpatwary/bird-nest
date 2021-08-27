@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ItemService } from 'src/controllers/item/item.service';
+import { ItemService } from './item.service';
 
 @ApiTags('Items')
 @Controller('items')
