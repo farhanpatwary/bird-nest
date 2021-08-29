@@ -11,6 +11,7 @@ import { Item } from './item/entity/item.entity';
 import { ItemController } from './item/item.controller';
 import { ItemModule } from './item/item.module';
 import { ItemService } from './item/item.service';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ItemService } from './item/item.service';
     TypeOrmModule.forFeature([Item]),
     UserModule,
     ItemModule,
+    OrderModule,
   ],
   controllers: [AppController, UserController, ItemController],
   providers: [AppService, UserService, ItemService],
