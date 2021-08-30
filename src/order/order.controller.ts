@@ -1,4 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreateOrderDto } from './dto/create-order.dto';
 
-@Controller('order')
-export class OrderController {}
+@Controller('orders')
+export class OrderController {
+  @Post('/')
+  createNewOrder(@Body() body: CreateOrderDto) {
+    console.log(body);
+  }
+}
