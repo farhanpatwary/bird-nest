@@ -19,7 +19,10 @@ export class UserService {
 
   async getById(id: string): Promise<User> {
     try {
-      const user = this.userRepository.findOneOrFail({ id });
+      const user = this.userRepository.findOneOrFail(
+        { id },
+        { relations: ['orders'] },
+      );
       return user;
     } catch (e) {
       console.log(`Failed to find user with id: ${id}`);
