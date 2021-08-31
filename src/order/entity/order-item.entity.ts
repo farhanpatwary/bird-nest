@@ -6,8 +6,8 @@ export class OrderItem {
   @PrimaryGeneratedColumn('increment')
   order_item_id: number;
 
-  @Column()
-  order_id: number;
+  // @Column()
+  // order_id: number;
 
   @ManyToOne(() => Order, (order) => order.items)
   order: Order;

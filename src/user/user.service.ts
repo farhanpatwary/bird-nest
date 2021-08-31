@@ -21,8 +21,15 @@ export class UserService {
     try {
       const user = this.userRepository.findOneOrFail(
         { id },
-        { relations: ['orders'] },
+        { relations: ['orders', 'orders.items'] },
       );
+      // const user = await this.userRepository
+      //   .createQueryBuilder('user')
+      //   .innerJoinAndSelect('user.orders', 'order')
+      //   .innerJoinAndSelect('orders.items', 'items')
+      //   .where('user.id = :id', { id })
+      //   .printSql()
+      //   .getOne();
       return user;
     } catch (e) {
       console.log(`Failed to find user with id: ${id}`);
