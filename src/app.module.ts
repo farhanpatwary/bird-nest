@@ -12,12 +12,13 @@ import { ItemController } from './item/item.controller';
 import { ItemModule } from './item/item.module';
 import { ItemService } from './item/item.service';
 import { OrderModule } from './order/order.module';
+import { Order } from './order/entity/order.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(ORMconfig),
-    TypeOrmModule.forFeature([User]),
-    TypeOrmModule.forFeature([Item]),
+    TypeOrmModule.forFeature([User, Item, Order]),
+    // TypeOrmModule.forFeature([Item]),
     UserModule,
     ItemModule,
     OrderModule,

@@ -4,6 +4,6 @@ export class CreateOrderDto {
 }
 
 interface OrderItemInterface {
-  item_id: string;
+  item_id: number;
   quantity: number;
 }
