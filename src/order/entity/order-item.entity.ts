@@ -12,9 +12,6 @@ export class OrderItem {
   @PrimaryGeneratedColumn('increment')
   order_item_id: number;
 
-  // @Column()
-  // order_id: number;
-
   @ManyToOne(() => Order, (order) => order.items)
   @JoinColumn({ name: 'order_id' })
   order: Order;
@@ -23,5 +20,5 @@ export class OrderItem {
   item_id: number;
 
   @Column()
-  quantity: string;
+  quantity: number;
 }

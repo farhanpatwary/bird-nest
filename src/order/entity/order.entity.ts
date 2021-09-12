@@ -13,12 +13,9 @@ export class Order {
   @PrimaryGeneratedColumn()
   order_id: number;
 
-  // @Column({ type: 'uuid' })
-  // user_id: string;
-
-  @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
   items: OrderItem[];
 
-  @ManyToOne(() => User, (user) => user.orders)
+  @ManyToOne(() => User, (user) => user.orders, { cascade: true })
   user: User;
 }

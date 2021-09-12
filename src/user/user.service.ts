@@ -25,8 +25,8 @@ export class UserService {
       // );
       const user = await this.userRepository
         .createQueryBuilder('user')
-        .innerJoinAndSelect('user.orders', 'order')
-        .innerJoinAndSelect('order.items', 'item')
+        .leftJoinAndSelect('user.orders', 'order')
+        .leftJoinAndSelect('order.items', 'item')
         .where('user.id = :id', { id })
         .getOne();
       return user;
